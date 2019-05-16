@@ -42,7 +42,7 @@ statusObject = json.loads(flowResponse)
 assert(statusObject['status'] == 'STARTACCESS_PERMIT')
 assert(len(statusObject['sessionId']) >  0)
 
-print("*****Finish*****")
+print("*****Finish*****" + statusObject['sessionId'])
 headers = {'Content-type': 'text/plain'}
 response = requests.post(pepurl + finish, headers=headers,data=statusObject['sessionId'])
 assert(response.status_code == 200)
