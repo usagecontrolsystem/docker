@@ -1,0 +1,35 @@
+pipeline {
+    agent any
+    stages {
+        stage("Checkout") {
+            steps {
+                git url : 'https://github.com/usagecontrolsystem/docker'
+                git url: 'https://github.com/deviitcnr/usagecontrolsystem'
+            }
+        }
+        stage("Compile") {
+            steps {
+                sh 'mvn install -DskipTests'
+                sh 'cp UsageControlFramework/target/*.jar docker_ucs/ucs.jar'
+                sh 'cp PEPRest/target/*.jar docker_pep/pep.jar'
+            }
+        }
+        stage("Docker build") {
+            steps {
+                sh "docker-compose up -d"
+            }
+        }
+        stage("Docker test") {
+            steps {
+                sleep(10)
+                sh "python3 dockerTests/IntegrationTest.py"
+                sh "python3 dockerTests/IntegrationTestWithRevoke.py"
+            }    
+        }
+        stage("Docker end") {
+            steps{
+                sh "docker-compose down"
+            }
+        }
+    }
+}
