@@ -25,7 +25,7 @@ flowResponse = ''
 for i in range(0,10) : 
     time.sleep(1)
 
-    print("Get flow status")
+    print("Get flow status" + messageId)
 
     payload='messageId=' + messageId
 
@@ -50,7 +50,7 @@ assert(response.status_code == 200)
 for i in range(0,20) :
     time.sleep(1)
 
-    print("Get flow status")
+    print("Get flow status" + messageId)
 
     payload='messageId=' + messageId
 
