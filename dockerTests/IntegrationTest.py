@@ -22,7 +22,7 @@ print(messageId)
 print("*****Wait 10 seconds*****")
 
 flowResponse = ''
-for i in range(0,5) : 
+for i in range(0,10) : 
     time.sleep(1)
 
     print("Get flow status")
@@ -47,7 +47,7 @@ headers = {'Content-type': 'text/plain'}
 response = requests.post(pepurl + finish, headers=headers,data=statusObject['sessionId'])
 assert(response.status_code == 200)
 
-for i in range(0,5) :
+for i in range(0,10) :
     time.sleep(1)
 
     print("Get flow status")

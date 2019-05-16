@@ -24,7 +24,7 @@ print(messageId)
 print("*****Wait 10 seconds*****")
 
 flowResponse = ''
-for i in range(0,5) : 
+for i in range(0,10) : 
     time.sleep(1)
 
     print("Get flow status")
@@ -49,7 +49,7 @@ print("*****REVOKE*****")
 os.system("docker exec docker_ucs_1 bash -c 'echo 40.0 > pips/temperature.txt'")
 #subprocess.call(["docker", "exec", "-it", "usagecontrolsystem_ucs_1", "bash", "-c", "'echo 40.0 > pips/temperature.txt'"])
 
-for i in range(0,15) :
+for i in range(0,25) :
     time.sleep(1)
 
     #print("Get flow status")
