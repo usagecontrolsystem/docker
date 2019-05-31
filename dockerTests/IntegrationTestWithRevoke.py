@@ -7,9 +7,9 @@ import subprocess
 import os
 
 pepurl = "http://localhost:9999/"
-startEvaluation = "startEvaluation"
+startEvaluation = "start"
 finish = "finish"
-status = "flowStatus"
+status = "status"
 
 #start evaluation
 
