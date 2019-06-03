@@ -3,14 +3,14 @@ pipeline {
     stages {
         stage("Checkout") {
             steps {
-                git url : 'https://github.com/usagecontrolsystem/docker'
-                git url: 'https://github.com/deviitcnr/usagecontrolsystem'
+                git url: 'https://github.com/usagecontrolsystem/docker'
+                git url: 'https://github.com/usagecontrolsystem/usagecontrolsystem'
             }
         }
         stage("Compile") {
             steps {
                 sh 'mvn install -DskipTests'
-                sh 'cp UsageControlFramework/target/*.jar docker_ucs/ucs.jar'
+                sh 'cp UCSRest/target/*.jar docker_ucs/ucs.jar'
                 sh 'cp PEPRest/target/*.jar docker_pep/pep.jar'
             }
         }
@@ -24,7 +24,7 @@ pipeline {
                 sleep(10)
                 sh "python3 dockerTests/IntegrationTest.py"
                 sh "python3 dockerTests/IntegrationTestWithRevoke.py"
-            }    
+            }
         }
         stage("Docker end") {
             steps{

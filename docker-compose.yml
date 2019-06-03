@@ -6,10 +6,10 @@ services:
       - "9998:9998"
     networks:
       backend:
-        ipv4_address: 10.0.0.3        
+        ipv4_address: 10.0.0.3
   pep:
     build: docker_pep/
-    ports: 
+    ports:
       - "9999:9999"
     networks:
       backend:
